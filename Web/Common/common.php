@@ -416,4 +416,32 @@ $array[$k] = loopxss($v);
 }
 return $array;
 }
+
+//投票模块:for add()
+function vote($vid){
+	$vote = M('vote');
+	$vo = $vote->where('status=1')->getField('id,title');
+	if($vid == 0)
+	{
+		$votehtml = '<option value=\"0\" selected>不投票</option>';
+	}
+	else
+	{
+		$votehtml = '<option value=\"0\">不投票</option>';
+	}
+	foreach($vo as $k=>$v)
+	{
+		if($k == $vid)
+		{
+			$votehtml.="<option value=\"{$k}\" selected>{$v}</option>";
+		}
+		else
+		{
+			$votehtml.="<option value=\"{$k}\">{$v}</option>";
+		}
+	}
+	//$this->assign('votehtml',$votehtml);
+	echo $votehtml;
+	unset($votehtml);
+}
 ?>

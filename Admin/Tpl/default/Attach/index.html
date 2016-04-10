@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link href="__PUBLIC__/Admin/images/Admin_css.css" type=text/css rel=stylesheet>
+<import file= "Admin.js.Jquery"/>
+<script src="__PUBLIC__/js/bootstrap.min.js"></script>
+</head>
+ 
+<body>
+  <div class="main_center">
+    <table border="0" cellspacing="2" cellpadding="3"  align="center" class="table table-bordered">
+      <tr> 
+        <td colspan="8" align=left class="admintitle">附件列表　
+          [<a href="__URL__/add"><font color="#FF0000">添加附件</font></a>] 
+        </td>
+      </tr>
+      <tr align="center"> 
+        <td width="8%" class="ButtonList">附件ID</td>
+        <td width="30%" class="ButtonList">附件名</td>
+        <td width="30%" class="ButtonList">附件位置</td>
+        <td width="12%" class="ButtonList">是否显示</td>
+        <td width="8%" class="ButtonList">上传日期</td>
+      </tr>
+
+
+      <volist name= "list" id="vo"> 
+        <tr bgcolor="#f1f3f5" onMouseOver="this.style.backgroundColor='#EAFCD5';this.style.color='red'" onMouseOut="this.style.backgroundColor='';this.style.color=''">
+          <td height="24" class="tdleft" style="text-align: center;"> 
+            <a href="__APP__/Article/index/typeid/{$vo.typeid}">{$vo.id}</a>
+      	  </td>
+
+          <td height="24" align="center">{$vo.title}</td>
+          
+          <td height="24" align="center">{$vo.url}</td>
+          
+          <td height="24" align="center" class="tdleft">
+            <eq name="vo.is_view" value= "1">
+              <a href="__URL__/status/id/{$vo.id}/s/isview-0">√
+                <else/>
+              <a href="__URL__/status/id/{$vo.id}/s/isview-1">ㄨ
+            </eq>
+            </a>
+          </td>
+
+          <td height="24" align="center">{$vo.created|date='Y-m-d',###}</td>
+          
+        </tr>
+      </volist> 
+    </table>
+  </div>
+</body>
+</html>

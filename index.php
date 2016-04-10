@@ -15,5 +15,5 @@ if(!file_exists(dirname(__FILE__).'/install.lck')) header('Location:./install/in
 define('THINK_PATH','./Core/');
 define('APP_NAME','Web');
 define('APP_PATH','./Web/');
-//define('APP_DEBUG',true);
+define('APP_DEBUG',true);
 require(THINK_PATH."/Core.php");

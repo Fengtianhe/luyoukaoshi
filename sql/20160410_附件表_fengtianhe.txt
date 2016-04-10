@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS `dami_attach` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` text NOT NULL,
+  `url` varchar(100) NOT NULL,
+  `created` int(11) NOT NULL,
+  `is_view` int(11) NOT NULL DEFAULT '1' COMMENT '0关闭,1显示',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='附件表' AUTO_INCREMENT=1 ;

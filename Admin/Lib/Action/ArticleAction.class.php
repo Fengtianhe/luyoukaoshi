@@ -622,7 +622,7 @@ class ArticleAction extends CommonAction
 	}
 	
 	//投票模块:for add()
-	private function vote($vid){
+	public function vote($vid){
 		$vote = M('vote');
 		$vo = $vote->where('status=1')->getField('id,title');
 		if($vid == 0)
