@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="__TMPL__/css/base.css" />
+<script type="text/javascript" src="__TMPL__/js/jquery.min.js"></script>
+<title>QQ客服在线</title>
+</head>
+<body>
+<!--QQ在线代码-->
+<div id="cus_ser">
+    <div class="cus_ser_">
+        <div class="title"></div>
+        <ul>
+            <li id="zqq">
+                <a href="http://wpa.qq.com/msgrd?v=3&uin=279197963&site=qq&menu=yes" target="_blank">技术：279197963</a>
+            </li>
+            <li id="zqq">
+                <a href="http://wpa.qq.com/msgrd?v=3&uin=734352772&site=qq&menu=yes" target="_blank">营销：734352772</a>
+            </li>
+            <li id="zqq">
+                <a href="http://wpa.qq.com/msgrd?v=3&uin=279197963&site=qq&menu=yes" target="_blank">策划：279197963</a>
+            </li>
+            <li id="zphone">
+                <a href="http://url.cn/QY2QaZ" target="_blank">QQ群:<b>312939348</b></a>
+            </li>
+        </ul>
+    </div>
+    <span class="close">
+        <img src="qqonline/images/icon_close.png" />
+    </span>
+</div>
+<script>$("#cus_ser .close").click(function() {
+    $("#cus_ser").css({
+        display: 'none'
+    });
+})
+$("#cus_ser").mouseover(function() {
+    $(this).stop();
+    $(this).animate({
+        width: 165
+    },
+    400, 'swing');
+}) 
+$("#cus_ser").mouseout(function() {
+    $("#cus_ser").stop();
+    $("#cus_ser").animate({
+        width: 32
+    },
+    400, 'swing');
+})
+</script>
+</body>
+</html>

@@ -27,7 +27,7 @@ return array(
 	'MAIL_REG'=>0,
 	'MAIL_SMTP_SERVER'=>'smtp.163.com',
 	'MAIL_FROM'=>'***@163.com',
-	'MAIL_PASSSWORD'=>'4kI6o6o+mgDpcTQWFC1TsTOClVJ1tDe3',
+	'MAIL_PASSSWORD'=>'dnGotitnfu3o9h2cbe2t/f3R0Y1RRV0ZDMVRzVE9DbFZKMXREZTMO0O0O',
 	'MAIL_TOADMIN'=>'279197963@qq.com',
 	'MAIL_PORT'=>25,
 	'TRADE_TYPE'=>array(1=>'支付宝在线支付',2=>'货到付款',3=>'站内扣款'),

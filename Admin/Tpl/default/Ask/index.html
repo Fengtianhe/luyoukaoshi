@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link href="__PUBLIC__/Admin/images/Admin_css.css" type=text/css rel=stylesheet>
+<import file= "Admin.js.Jquery"/>
+<script src="__PUBLIC__/js/bootstrap.min.js"></script>
+</head>
+ 
+<body>
+  <div class="main_center">
+    <table border="0" cellspacing="2" cellpadding="3"  align="center" class="table table-bordered">
+      <tr> 
+        <td colspan="8" align=left class="admintitle">QQ咨询列表　
+          [<a href="__URL__/add"><font color="#FF0000">添加QQ号</font></a>] 
+        </td>
+      </tr>
+      <tr align="center"> 
+        <td width="8%" class="ButtonList">ID</td>
+        <td width="30%" class="ButtonList">QQ类型名</td>
+        <td width="30%" class="ButtonList">QQ号</td>
+        <td width="12%" class="ButtonList">是否显示</td>
+      </tr>
+
+
+      <volist name= "list" id="vo"> 
+        <tr bgcolor="#f1f3f5" onMouseOver="this.style.backgroundColor='#EAFCD5';this.style.color='red'" onMouseOut="this.style.backgroundColor='';this.style.color=''">
+          <td height="24" class="tdleft" style="text-align: center;"> 
+            <a href="__APP__/Article/index/typeid/{$vo.typeid}">{$vo.id}</a>
+          </td>
+
+          <td height="24" align="center">{$vo.name}</td>
+          
+          <td height="24" align="center">{$vo.number}</td>
+          
+          <td height="24" align="center" class="tdleft">
+            <eq name="vo.status" value= "1">
+              <a href="__URL__/status/id/{$vo.id}/s/-1">√
+                <else/>
+              <a href="__URL__/status/id/{$vo.id}/s/1">ㄨ
+            </eq>
+            </a>
+          </td>
+          
+        </tr>
+      </volist> 
+    </table>
+  </div>
+</body>
+</html>
