@@ -20,10 +20,11 @@
         <td width="30%" class="ButtonList">QQ类型名</td>
         <td width="30%" class="ButtonList">QQ号</td>
         <td width="12%" class="ButtonList">是否显示</td>
+        <td width="12%" class="ButtonList">操作</td>
       </tr>
 
 
-      <volist name= "list" id="vo"> 
+      <volist name= "list" id="vo">
         <tr bgcolor="#f1f3f5" onMouseOver="this.style.backgroundColor='#EAFCD5';this.style.color='red'" onMouseOut="this.style.backgroundColor='';this.style.color=''">
           <td height="24" class="tdleft" style="text-align: center;"> 
             <a href="__APP__/Article/index/typeid/{$vo.typeid}">{$vo.id}</a>
@@ -41,7 +42,7 @@
             </eq>
             </a>
           </td>
-          
+          <td align="center"><a href="__URL__/doDelete/id/{$vo.id}">删除</a></td>
         </tr>
       </volist> 
     </table>

@@ -78,6 +78,9 @@ parent::html_init($static_file,$php_file,$is_build);
 		}
 		$map['islink'] = 0;
 		$nav = $type->where($map)->field('typeid,typename')->select();
+		$array_count = count($nav);
+		$last_dh = $nav[$array_count-1];
+		$this->assign('last_dh',$last_dh);
 		$this->assign('dh',$nav);
 //第一次释放内存
         $pernum = (isset($list['pernum'])&& intval($list['pernum'])>0)?intval($list['pernum']):$config['artlistnum'];

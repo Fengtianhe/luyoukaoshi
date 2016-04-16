@@ -3,21 +3,24 @@
 			<div class="content">
 				<div class="content_all clearfix">
 					<div class="content_left clearfix">
-						<p class="all_advertist clearfix">
-							<span class="message_padding">通知公告</span><a class="new_local font12" href="">当前位置</a>
-						</p>
+						<div class="all_advertist">
+							<span class="message_padding">{$last_dh.typename}</span>
+							
+							<div class="font12 now_local">当前位置:{$nav}</div>
+						</div>
 						<div class="artical">
-							<h3>hkdfjdhsfkjdshfkdsjh</h3>
-							<p>还贷款神经啊还贷款就撒和的可就撒和单烤红薯大家会撒娇可的和可会计师大会上卡机的和可三就阿和的可撒</p>
+							<h3>{$article.title}</h3>
+							<p>{$article.content}</p>
 						</div>
 					</div>
 					<div class="content_right">
 						<div class="right_title">文章列表</div>
 						<div class="right_list font12">
-							<ul>
-								<li><a href="">111111</a></li>
-								<li><a href="">222222</a></li>
-							</ul>
+							<dl>
+								<arclist model="article" order="addtime desc" num="5">
+								<dd><a href='{$vo.aid|url='articles',###}' target='_blank' title='{$vo.title}'>{$vo.title|msubstr=###,0,12,'utf-8'}</a></dd>
+								</arclist>
+							</dl>
 						</div>
 					</div>
 				</div>

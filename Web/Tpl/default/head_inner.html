@@ -14,16 +14,39 @@
 <div class="top_container">
 		<div class="top_content">
 			<p class="friend_link font12"><a href="">新浪微博</a>/<a href="">腾讯微博</a></p>
-			<p><img src="./images/logo.png" alt="" height="50"></p>
-			<p class="wang_to_do font12">宗旨:是啥偶不知道</p>
+			<p><img src="__PUBLIC__/image/logo.png" alt="" height="50"></p>
+			<p class="wang_to_do font12">宗旨:{$config.sitedescription}</p>
 		</div>
 	</div>
 	<div class="content_bar">
 		<ul class="clearfix">
-			<li><a href="">主页</a></li>
-			<li><a href="">信息公开</a></li>
-			<li><a href="">主页</a></li>
-			<li><a href="">工作动态</a></li>
-			<li><a href="">通知公告</a></li>
+			<li><a href="__ROOT__/">主页</a></li>
+			<volist name="menu" id="vo" offset="0" length='7' key="k"> 
+			<li>
+				<a href="<eq name="vo.url" value="">{$vo.typeid|url=lists,###}<else/>__ROOT__{$vo.url}</eq>" target="<eq name="vo.target" value="1">_self<else/>_blank</eq>">{$vo.typename}</a>
+				<!--第二级-->
+				<php>if($vo[submenu]){</php>
+				<!--[if lte IE 6]><table><tr><td><![endif]-->
+					<ul>
+						<volist name="vo[submenu]" id="sub" key="m">
+							<li>
+								<a href="{$sub.typeid|url=lists,###}">{$sub.typename}</a>
+								<!--第三级-->
+								<php>if(have_child($sub[typeid])){</php>
+								<!--[if lte IE 6]><table><tr><td><![endif]-->
+									<ul>
+									<arclist model="type" where="fid=$sub[typeid]" order="drank asc" id="tree">
+										<li><a href='{$tree.typeid|url=lists,###}'>{$tree.typename}</a></li>
+									</arclist>
+									</ul>
+								<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+								<php>}</php>
+							</li>
+						</volist>
+					</ul>
+				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+				<php>}</php>
+			</li>
+			</volist>
 		</ul>
 	</div>

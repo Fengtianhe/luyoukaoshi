@@ -6,12 +6,6 @@ html,body,ul,li,p{
 a {
 	text-decoration: none;
 }
-.font14 {
-	font-size: 14px;
-}
-.font12 {
-	font-size: 12px;
-}
 .clearfix:after {
 	height: 0;
 	content: "";
@@ -34,6 +28,9 @@ a {
 	padding: 5px;
 	text-align: right;
 }
+.friend_link a {
+	color: #333;
+}
 .wang_to_do {
 	padding: 10px;
 }
@@ -47,9 +44,9 @@ a {
 .content_bar {
 	width: 1024px;
 	height: 50px;
+	margin: 0 auto;
 	background: url(../images/top_bg.jpg) repeat-x;
 	border-radius: 6px;
-	margin: 0 auto;
 }
 .content_bar ul {
 	list-style: none;
@@ -83,10 +80,13 @@ a {
 .new_local {
 	float: right;
 	padding-right: 20px;
+	color: #333;
 }
 .artical {
 	padding: 14px;
+	height: 585px;
 }
+
 .content_right {
 	display: inline-block;
 	float: left;
@@ -95,7 +95,7 @@ a {
 .right_title {
 	width: 200px;
 	height: 50px;
-	text-indent: 10px;
+	text-indent: 20px;
 	line-height: 50px;
 	background: url(../images/top_bg.jpg) repeat-x;
 	border-top-left-radius: 5px;
@@ -106,16 +106,19 @@ a {
 	padding: 10px;
 	background-color: #f1f1f1;
 }
-.right_list ul {
+.right_list dl {
 	list-style: none;
 }
-.right_list ul li {
+.right_list dl dd{
 	height: 40px;
 	line-height: 40px;
 	border-bottom: 1px solid #ddd;
 }
-.right_list ul li a {
-	color: #818181;
+.right_list dl dd a {
+	color: #333;
+}
+.right_list dl dd a:hover {
+	color: #888;
 }
 .foot {
 	width: 1024px;
@@ -196,6 +199,12 @@ a {
 .all_news ul li {
 	padding: 9px 0 0 25px;
 }
+.all_news ul li a {
+	color: #333;
+}
+.all_news ul li a:hover {
+	color: #888;
+}
 .all_news ul li img{
 	margin-right: 5px;
 }
@@ -239,6 +248,12 @@ a {
 .ad_content ul li {
 	padding: 9px 0 0 25px;
 }
+.ad_content ul li a {
+	color: #333;
+}
+.ad_content ul li a:hover {
+	color: #888;
+}
 .built_county {
 	margin-top: 20px; 
 }
@@ -278,6 +293,12 @@ a {
 .beautiful_city .content .know_more {
 	text-align: right;
 	padding: 2px 10px;
+}
+.beautiful_city .content .know_more a {
+	color: #333;
+}
+.beautiful_city .content .know_more a:hover {
+	color: #888;
 }
 .play_test {
 	width: 200px;
@@ -341,4 +362,55 @@ a {
 }
 .all_img img {
 	margin: 10px 13px;
+}
+/*列表页*/
+.right_list_margin {
+	margin-right: 0;
+	height: 685px;
+}
+.left_list {
+	margin-right: 18px;
+}
+.all_advertist {
+	background-color: #ddd;
+	padding: 10px;
+}
+.font12 {
+	font-size: 12px;
+}
+.color_333 {
+	color: #333;
+}
+.all_list {
+	font-size: 12px;
+}
+.all_list_first_p {
+	background-color: #ddd;
+}
+.other_p {
+	border-bottom: 1px dashed #ddd;
+}
+.all_list span {
+	display: inline-block;
+}
+.span_index {
+	width: 18%;
+	text-align: center;
+}
+.span_content {
+	width: 58%;
+}
+.span_content a{
+	color: #333;
+}
+.span_content a:hover{
+	color: #888;
+}
+.span_time {
+	width: 18%;
+	text-align: center;
+}
+.now_local{
+	display: block;
+	float: right;
 }

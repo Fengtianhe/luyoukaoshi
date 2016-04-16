@@ -12,18 +12,16 @@
     <div class="cus_ser_">
         <div class="title"></div>
         <ul>
+            <arclist model="qqonline" id="vo" where="status=1&is_qun=-1">
             <li id="zqq">
-                <a href="http://wpa.qq.com/msgrd?v=3&uin=279197963&site=qq&menu=yes" target="_blank">技术：279197963</a>
+                <a href="http://wpa.qq.com/msgrd?v=3&uin={$vo.number}&site=qq&menu=yes" target="_blank">{$vo.name}：{$vo.number}</a>
             </li>
-            <li id="zqq">
-                <a href="http://wpa.qq.com/msgrd?v=3&uin=734352772&site=qq&menu=yes" target="_blank">营销：734352772</a>
-            </li>
-            <li id="zqq">
-                <a href="http://wpa.qq.com/msgrd?v=3&uin=279197963&site=qq&menu=yes" target="_blank">策划：279197963</a>
-            </li>
+            </arclist>
+            <arclist model="qqonline" id="vo" where="status=1&is_qun=1">
             <li id="zphone">
-                <a href="http://url.cn/QY2QaZ" target="_blank">QQ群:<b>312939348</b></a>
+                <a href="http://url.cn/QY2QaZ" target="_blank">QQ群:<b>{$vo.number}</b></a>
             </li>
+            </arclist>
         </ul>
     </div>
     <span class="close">
