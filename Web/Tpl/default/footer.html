@@ -2,14 +2,23 @@
 		<div class="foot_top clearfix">
 			<div class="top_left">友情链接</div>
 			<div class="top_right">
-				<select name="" id="" class="font12">
+				<select name="" id="" class="font12" onchange="self.location.href=options[selectedIndex].value">
 					<option value="">中国政府和国家委网站</option>
+					<arclist model="link" where="type=1" id="vo">
+					<option value="{$vo.url}">{$vo.title}</option>
+					</arclist>
 				</select>
-				<select name="" id="" class="font12">
+				<select name="" id="" class="font12" onchange="self.location.href=options[selectedIndex].value">
 					<option value="">省(区市)政府网站</option>
+					<arclist model="link" where="type=2" id="vo">
+					<option value="{$vo.url}">{$vo.title}</option>
+					</arclist>
 				</select>
-				<select name="" id="" class="font12">
+				<select name="" id="" class="font12" onchange="self.location.href=options[selectedIndex].value">
 					<option value="">其他友情链接</option>
+					<arclist model="link" where="type=3" id="vo">
+					<option value="{$vo.url}">{$vo.title}</option>
+					</arclist>
 				</select>
 			</div>
 		</div>

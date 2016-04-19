@@ -57,7 +57,7 @@ class AttachAction extends CommonAction
 		$upload->savePath='./Public/Uploads/Attach/';//保存路径建议与主文件平级目录或者平级目录的子目录来保存  
 		$upload->saveRule=uniqid;//上传文件的文件名保存规则
 		$upload->uploadReplace=true;//如果存在同名文件是否进行覆盖
-		$upload->allowExts=array('jpg','jpeg','png','gif', 'txt');//准许上传的文件类型
+		$upload->allowExts=array('jpg','jpeg','png','gif', 'txt','rar','zip');//准许上传的文件类型
 		 
 		if($upload->upload()){
 		  $info=$upload->getUploadFileInfo();

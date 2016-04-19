@@ -98,7 +98,7 @@ $.post(url);
     <td height="24" align="center">	<eq name="vo.ismenu" value= "1"><a href="__URL__/status/typeid/{$vo.typeid}/s/ismenu-1">√<else/><a href="__URL__/status/typeid/{$vo.typeid}/s/ismenu-0">ㄨ</eq></a></td>
 	<td height="24" align="center"><eq name="vo.isindex" value= "1">{$vo.irank}<else/>-</eq></td>
     <td height="24" align="center"><eq name="vo.isindex" value= "1"><a href="__URL__/status/typeid/{$vo.typeid}/s/isindex-1">√<else/><a href="__URL__/status/typeid/{$vo.typeid}/s/isindex-0">ㄨ</eq></a></td>
-    <td width="23%" align="center"><a href="__URL__/edit/typeid/{$vo.typeid}">编辑</a> | <a href="__URL__/del/typeid/{$vo.typeid}" onClick="JavaScript:return confirm('删除的栏目必须无子栏目,且无文章！确定？')">删除</a>  <neq name='vo.islink' value='1'>| <a href="__URL__/show_field/typeid/{$vo.typeid}">字段显示</a>  |<a href='__URL__/manage_moban/typeid/{$vo.typeid}'>模板控制</a></neq></td>
+    <td width="23%" align="center"><a href="__URL__/edit/typeid/{$vo.typeid}">编辑</a> | <a href="__URL__/del/typeid/{$vo.typeid}" onClick="JavaScript:return confirm('删除的栏目必须无子栏目,且无文章！确定？')">删除</a>  <neq name='vo.islink' value='1'>|<a href='__URL__/manage_moban/typeid/{$vo.typeid}'>模板控制</a></neq></td>
   </tr>
  </volist> 
 </table>

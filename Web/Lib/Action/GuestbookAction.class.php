@@ -30,31 +30,19 @@ class GuestbookAction extends BaseAction
 	{
 	//输出gb2312码,ajax默认转的是utf-8
 		header("Content-type: text/html; charset=utf-8");
-		if(!isset($_POST['author']) or !isset($_POST['content']))
+		if(!isset($_POST['content']))
 		{
 			alert('非法操作!',3);
 		}
 	//读取数据库和缓存
 		$pl = M('guestbook');
 		$config = F('basic','','./Web/Conf/');
-	//相关判断
-		if(Session::is_set('posttime'))
-		{
-			$temp = Session::get('posttime') + $config['postovertime'];
-			if(time() < $temp)
-			{
-				echo "请不要连续发布!";
-				exit;
-			}
-		}
 	//准备工作
 		if($config['bookoff'] == 0) $data['status'] = 0;
 	//先解密js的escape
-		$data['author'] = htmlspecialchars(unescape($_POST['author']));
-		$data['content'] = htmlspecialchars(trim(unescape($_POST['content'])));
-		$data['title'] = htmlspecialchars(trim(unescape($_POST['title'])));
-		$data['tel'] = htmlspecialchars(trim(unescape($_POST['tel'])));
-		$data['ip'] = remove_xss(htmlentities(get_client_ip()));
+		$data['author'] = I('post.author','游客');
+		$data['content'] = I('post.content');
+		$data['ip'] = get_client_ip();
 		$data['addtime'] = date('Y-m-d H:i:s');
 	//处理数据
 		if($pl->add($data))
@@ -62,19 +50,16 @@ class GuestbookAction extends BaseAction
 			Session::set('posttime', time());
 			if($config['bookoff'] == 0)
 			{
-				echo '发布成功,留言需要管理员审核!';
-				exit;
+				$this->success('发布成功,留言需要管理员审核!');
 			}
 			else
 			{
-				echo '发布成功!';
-				exit;
+				$this->success('发布成功!');
 			}
 		}
 		else
 		{
-			echo '发布失败!';
-			exit;
+			$this->error('发布失败!');
 		}
 	}
 	

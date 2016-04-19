@@ -11,7 +11,7 @@
     @Date 2011-11-23 10:26:03 $
 *************************************************************/
 class LinkAction extends CommonAction
-{	
+{
     public function index()
     {
 		$link = M('link');
@@ -26,7 +26,7 @@ class LinkAction extends CommonAction
 		$p->setConfig('theme',"%first%%upPage%%linkPage%%downPage%%end%
 		<li><span><select name='select' onChange='javascript:window.location.href=(this.options[this.selectedIndex].value);'>%allPage%</select></span></li>\n<li><span>共<font color='#009900'><b>%totalRow%</b></font>条记录 20条/每页</span></li>");
 		$this->assign('page',$p->show());
-		$list = $link->order('rank asc')->limit($p->firstRow.','.$p->listRows)->select();
+		$list = $link->limit($p->firstRow.','.$p->listRows)->select();
 		$this->assign('list',$list);
 		$this->display();
     }
@@ -49,9 +49,7 @@ class LinkAction extends CommonAction
 		$data['id'] = $_POST['id'];
 		$data['title'] = $_POST['title'];
 		$data['url'] = $_POST['url'];
-		$data['rank'] = $_POST['rank'];
-		$data['logo'] = $_POST['logo'];
-		$data['islogo'] = $_POST['islogo'];
+		$data['type'] = I('post.type');
 		$link = M('link');
 		if($link->data($data)->save())
 		{
@@ -64,9 +62,7 @@ class LinkAction extends CommonAction
     {
 		$data['title'] = $_POST['title'];
 		$data['url'] = $_POST['url'];
-		$data['rank'] = $_POST['rank'];
-		$data['logo'] = $_POST['logo'];
-		$data['islogo'] = $_POST['islogo'];
+		$data['type'] = I('post.type_id');
 		$data['status'] = 1;
 		$link = M('link');
 		if($link->data($data)->add())

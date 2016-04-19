@@ -31,26 +31,21 @@
 </tr>
 <tr>
   <td bgcolor="#f7f7f7">留言人</td>
-  <td colspan=4 bgcolor="#f7f7f7" class=td><input name="author" type="text" class="inputbg" id="author" value="{$list.author}" size="30"></td>
+  <td colspan=4 bgcolor="#f7f7f7" class=td><input name="author" type="text" class="inputbg" id="author" value="{$list.author}" size="30" disabled></td>
 </tr>
 <tr>
   <td bgcolor="#f7f7f7">留言时间</td>
-  <td colspan=4 bgcolor="#f7f7f7" class=td>{$list.addtime}</td>
+  <td colspan=4 bgcolor="#f7f7f7" class=td disabled>{$list.addtime}</td>
 </tr>
 <tr>
   <td bgcolor="#f7f7f7">内容</td>
   <td colspan=4 bgcolor="#f7f7f7" class=td>
-  <textarea name="content" cols="80" rows="10" id="content">{$list.content}</textarea></td>
-</tr>
-<tr>
-  <td bgcolor="#f7f7f7">回复</td>
-  <td colspan=4 bgcolor="#f7f7f7" class=td>
-  <textarea name="recontent" cols="80" rows="10" id="recontent">{$list.recontent}</textarea></td>
+  <textarea name="content" cols="80" rows="10" id="content" disabled>{$list.content}</textarea></td>
 </tr>
 <tr> 
 <td width="20%"></td>
 <td colspan=4 class=td><input name="id" type="hidden" value="{$list.id}">
-<input name="submit" type="submit" class="btn btn-success" value="提 交">  <input name="Submit22" type="button" class="btn btn-info" onClick="history.go(-1)" value="返 回">  </td>
+<input name="Submit22" type="button" class="btn btn-info" onClick="history.go(-1)" value="返 回">  </td>
 </tr>
 </form>
 </table>

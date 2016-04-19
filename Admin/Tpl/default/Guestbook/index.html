@@ -34,7 +34,6 @@
     <td width="5%" height="30" align="center" class="ButtonList">&nbsp;</td>
     <td width="40%" align="center" class="ButtonList">留言内容</td>
     <td width="8%" align="center" class="ButtonList">发布人</td>
-    <td width="10%" align="center" class="ButtonList">联系电话</td>
     <td width="8%" align="center" class="ButtonList">IP</td>
     <td width="10%" height="25" align="center" class="ButtonList">发布时间</td>
     <td width="15%" height="25" align="center" class="ButtonList">管理</td>    
@@ -44,10 +43,9 @@
     <td height="25" align="center" bgcolor="f7f7f7"><input type="checkbox" value="{$vo.id}" name="id[]" onClick="unselectall(this.form)" style="border:0;"></td>
     <td height="25" bgcolor="f7f7f7"><a href="__URL__/edit/id/{$vo.id}">{$vo.content|msubstr=###,0,30,'utf-8'}...</a></td>
     <td height="25" align="center" bgcolor="f7f7f7">{$vo.author}</td>
-    <td align="center" bgcolor="f7f7f7">{$vo.tel}</td>
     <td align="center" bgcolor="f7f7f7">{$vo.ip}</td>
     <td height="25" align="center" bgcolor="f7f7f7"><span class="td">{$vo.addtime}</span></td>
-    <td align="center" bgcolor="f7f7f7"><a href="__URL__/status/id/{$vo.id}/status/{$vo.status}"><eq name="vo.status" value="1">已审<else/><font color='red'>未审</font></eq></a>|<a href="__URL__/edit/id/{$vo.id}">回复</a>|<a href="__URL__/del/id/{$vo.id}" onClick="JavaScript:return confirm('确定要删除?')">删除</a></td>
+    <td align="center" bgcolor="f7f7f7"><a href="__URL__/status/id/{$vo.id}/status/{$vo.status}"><eq name="vo.status" value="1">已审<else/><font color='red'>未审</font></eq></a>|<a href="__URL__/del/id/{$vo.id}" onClick="JavaScript:return confirm('确定要删除?')">删除</a></td>
     </tr>
 	</volist>
 <tr><td align="center" bgcolor="f7f7f7"><input name="Action" type="hidden"  value="Del"><input name="chkAll" type="checkbox" id="chkAll" onClick=CheckAll(this.form) value="checkbox" style="border:0"></td>
