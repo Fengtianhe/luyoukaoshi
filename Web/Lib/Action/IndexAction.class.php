@@ -118,8 +118,11 @@ $this->assign('cur_menu',0);
 		$this->assign('link',$lk);
 		$this->assign('logolink',$logolk);
 		unset($link,$logolk,$map);
-//输出模板
-$this->display(TMPL_PATH.cookie('think_template').'/index.html');
+		
+		//输出模板
+		$this->display(TMPL_PATH.cookie('think_template').'/index.html');
+
+
 if($is_build ==1){
 $c = ob_get_contents();
 if(!file_exists(dirname($static_file))){

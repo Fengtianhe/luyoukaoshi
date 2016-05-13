@@ -7,13 +7,14 @@ class AskAction extends CommonAction
     public function index()
     {
     	$qq = M('qqonline');
-    	$qqlist = $qq->where(array('is_del' => -1, 'is_qun'=>-1))->select();
+    	$qqlist = $qq->where(array('is_del' => -1, 'is_qun'=>2))->select();
     	$this->assign('list',$qqlist);
     	$this->display();
     }
 
     public function doAdd(){
     	$data = I('post.');
+	$data['is_qun'] = 2;
     	if (M('qqonline')->add($data)) {
     		$this->success('添加成功');
     	}else {
@@ -35,7 +36,7 @@ class AskAction extends CommonAction
     public function doDelete(){
 		$id = I('get.id');
     	$data['is_del'] = 1;
-    	if (M('qqonline')->where(array('id'=> $id))->save($data)) {
+    	if (M('qqonline')->where(array('id'=> $id))->delete()) {
     		$this->success('删除成功');
     	}else {
     		$this->error('删除成功');

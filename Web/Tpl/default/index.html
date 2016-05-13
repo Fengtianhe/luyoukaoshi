@@ -1,167 +1,237 @@
 <include file="$head"/>        
 <div class="container">
-		<div class="content">
-			<div class="content_all clearfix">
-				<div class="content_left index_content_left">
-					<div class="now_news">
-						<span class="new_title">新闻头条</span>
-						<img src="__TMPL__/images/title.jpg" alt="" height="100">
-						<div class="new_content">
-							<arclist model="article" where="typeid=49" num="1" id="vo">
-							<div id="content_top">
-								<h3>{$vo.title}</h3>
-								<p class="font12">{$vo.content|msubstr=###,0,60,'utf-8'}</p>
+	<div class="content">
+		<div class="content_all clearfix">
+			<div class="content_left index_content_left">
+				<div class="now_news">
+					<span class="new_title" style="float: left;">新闻头条</span>
+					<img src="__TMPL__/images/title.jpg" alt="" height="100" style="float: left;"/>
+					<div class="new_content" id="new_content" style="width:670px;float: left;overflow: hidden;height: 100px;">
+						<arclist model="article" where="typeid=50" num="5" id="vo">
+						<?php
+							$vo['content'] = strip_tags($vo['content']);
+						?>
+						<a href="{$vo.aid|url=articles,###}" style="color:#000;display:block;height: 100px;margin-top:-5px">
+							<h3>{$vo.title}</h3>
+							<div class="font12" style="width: 670px;height:50px;line-height: 22px;">
+								{$vo.content|msubstr=###,0,130,'utf-8'}...
 							</div>
-							</arclist>
-						</div>
+						</a>
+						</arclist>
 					</div>
-					<div class="new_list clearfix">
-						<div class="new_img">
-							<arclist model="article" where="typeid=49" num="1" id="vo">
-							<div style="width: 100%;height: 100%;">
-								<img src="{$vo.imgurl}" alt="" width="450" height="300" style="z-index: 0;position: relative;"/>
-								<div class="img_title">{$vo.title}</div>
-							</div>
-							</arclist>
+				</div>
+				<div class="new_list clearfix">
+					<div class="new_img">
+						<arclist model="article" order="addtime desc" where="typeid=49" num="1" id="vo">
+						<div style="width: 100%;height: 100%;">
+							<img src="{$vo.imgurl}" alt="" width="450" height="300" style="z-index: 0;position: relative;"/>
+							<div class="img_title">{$vo.title}</div>
 						</div>
-						<div class="all_news font12">
+						</arclist>
+					</div>
+					<div class="all_news font12">
+						<ul>
+							<arclist model="article" order="istop desc,ishot desc,addtime desc" where="typeid=49" num="15" id="vo">
+							<?php
+								$vo['addtime'] = date('Y-m-d',time($vo['addtime']));
+							?>
+							<li style="height: 20px;">
+								<img src="__TMPL__/images/list_icon.jpg" alt="" style="float:left;">
+								<a href="{$vo.aid|url=articles,###}" style="float:left;">{$vo.title}</a>
+								<span style="float:right">{$vo.addtime|}</span>
+							</li>
+							</arclist>
+						</ul>
+					</div>
+				</div>
+				<div class="all_new_ad clearfix">
+					<div class="ad">
+						<div class="ad_title">
+							<span class="ad_name" style="width: 136px;">通知公告</span>
+							<span class="ad_more"><a href="{:url('lists',50)}">更多》</a></span>
+						</div>
+						<div class="ad_content font12">
 							<ul>
-								<arclist model="article" where="typeid=49" num="15" id="vo">
-								<li>
-									<img src="__TMPL__/images/list_icon.jpg" alt="">
-									<a href="">{$vo.title}</a>
+								<arclist model="article" order="istop desc,ishot desc,addtime desc" where="typeid=50" id="vo" num="10" >
+								<?php
+									$vo['addtime'] = date('Y-m-d',time($vo['addtime']));
+								?>
+								<li style="height: 15px;">
+									<img src="__TMPL__/images/list_icon.jpg" alt="{$vo.title}" style="float:left;">
+									<a href="{$vo.aid|url=articles,###}" style="float:left;">{$vo.title|msubstr=###,0,20,'utf-8'}</a>
+									<span style="float:right">{$vo.addtime|}</span>
 								</li>
 								</arclist>
 							</ul>
 						</div>
 					</div>
-					<div class="all_new_ad clearfix">
-						<div class="ad">
-							<div class="ad_title">
-								<span class="ad_name">考试官方信息公告</span>
-								<span class="ad_more font12"><a href="{:url('lists',50)}">更多》</a></span>
-							</div>
-							<div class="ad_content font12">
-								<ul>
-									<arclist model="article" where="typeid=50" id="vo" num="10">
-									<li>
-										<img src="__TMPL__/images/list_icon.jpg" alt="">
-										<a href="{$vo.linkurl}">{$vo.title|msubstr=###,0,30,'utf-8'}</a>
-									</li>
-									</arclist>
-								</ul>
-							</div>
+					<div class="ad">
+						<div class="ad_title">
+							<span class="ad_name" style="width: 136px;">新闻资讯</span>
+							<span class="ad_more"><a href="{:url('lists',51)}">更多》</a></span>
 						</div>
-						<div class="ad">
-							<div class="ad_title">
-								<span class="ad_name">业内旅游新闻</span>
-								<span class="ad_more font12"><a href="{:url('lists',51)}">更多》</a></span>
-							</div>
-							<div class="ad_content font12">
-								<ul>
-									<arclist model="article" where="typeid=51" id="vo" num="10">
-									<li>
-										<img src="__TMPL__/images/list_icon.jpg" alt="">
-										<a href="{$vo.linkurl}">{$vo.title|msubstr=###,0,30,'utf-8'}</a>
-									</li>
-									</arclist>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="built_county">
-						{:Ad(28);}
-						{:Ad(29);}
-						<br>
-						{:Ad(31);}
-						{:Ad(32);}
-					</div>
-					<div class="all_beautiful_city">
-						<div class="beautiful_city">
-							<div class="title">导游服务区</div>
-							<div class="content">
-								<p><img src="__TMPL__/images/jlfj1.jpg" alt="" width="178" height="100"></p>
-								<p class="know_more font12"><a href="{:url('lists',45)}">了解更多</a></p>
-							</div>
-						</div>
-						<div class="beautiful_city">
-							<div class="title">导游业务知识</div>
-							<div class="content">
-								<p><img src="__TMPL__/images/jlfj2.jpg" alt="" width="178" height="100"></p>
-								<p class="know_more font12"><a href="{:url('lists',46)}">了解更多</a></p>
-							</div>
-						</div>
-						<div class="beautiful_city">
-							<div class="title">岗前培训</div>
-							<div class="content">
-								<p><img src="__TMPL__/images/jlfj3.jpg" alt="" width="178" height="100"></p>
-								<p class="know_more font12"><a href="{:url('lists',47)}">了解更多</a></p>
-							</div>
-						</div>
-						<div class="beautiful_city">
-							<div class="title">导游求职</div>
-							<div class="content">
-								<p><img src="__TMPL__/images/jlfj4.jpg" alt="" width="178" height="100"></p>
-								<p class="know_more font12"><a href="{:url('lists',48)}">了解更多</a></p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="content_right">
-					<div class="play_test">
-						旅游考试入口
-						<br><img src="__TMPL__/images/go.jpg" alt="" width="40" height="40">
-					</div>
-					<div class="right_good_city">
-						<div class="title">导游考试入门</div>
-						<div class="content font12">
-							<arclist model="article" where="typeid=43" id="vo"  num="7">
-							<li style="border-bottom: 1px dashed #999;text-indent: 2em;line-height: 25px;height: 25px;"><a href="__ROOT__{$vo.url}">{$vo.title}</a></li>
-							</arclist>
-						</div>
-					</div>
-					<div class="right_good_city">
-						<div class="title">常见问题</div>
-						<div class="content font12">
-							<arclist model="article" where="typeid=43" id="vo" num="5">
-							<li style="border-bottom: 1px dashed #999;text-indent: 2em;line-height: 25px;height: 25px;"><a href="__ROOT__{$vo.url}">{$vo.title}</a></li>
-							</arclist>
-						</div>
-					</div>
-					<div class="right_good_city">
-						<div class="title">资料下载</div>
-						<div class="content font12">
+						<div class="ad_content font12">
 							<ul>
-								<arclist model="attach" num="7" id="vo" where="is_view=1">
-								<li style="border-bottom: 1px dashed #999;text-indent: 2em;line-height: 25px;height: 25px;"><a href="__ROOT__{$vo.url}">{$vo.title}</a></li>
+								<arclist model="article" order='istop desc,ishot desc,addtime desc' where="typeid=51" id="vo" num="10">
+								<?php
+								$vo['addtime'] = date('Y-m-d',time($vo['addtime']));
+							?>
+								<li style="height: 15px;">
+									<img src="__TMPL__/images/list_icon.jpg" alt="{$vo.title}" style="float:left;">
+									<a href="{$vo.aid|url=articles,###}" style="float:left;">{$vo.title|msubstr=###,0,20,'utf-8'}</a>
+									<span style="float:right">{$vo.addtime|}</span>
+								</li>
 								</arclist>
 							</ul>
 						</div>
 					</div>
-					<div class="right_good_city">
-						<div class="title">用户留言</div>
-						<div class="content">
-							<form action="{:U('Guestbook/update')}" method="post">
-								<textarea name="content" id="" cols="20" rows="5"></textarea>
-								<p><input type="submit" value="提交留言"></p>
-							</form>
+				</div>
+				<div class="built_county" style="width:800px;height:80px;">
+					{:Ad(28);}
+					{:Ad(29);}
+				</div>
+				<div class="all_new_ad clearfix">
+					<div class="ad">
+						<div class="ad_title">
+							<span class="ad_name" style="width: 136px;">各省文件</span>
+							<span class="ad_more"><a href="{:url('lists',129)}">更多》</a></span>
+						</div>
+						<div class="ad_content font12">
+							<ul>
+								<arclist model="article" order="istop desc,ishot desc,addtime desc" where="typeid=129" id="vo" num="10" >
+								<?php
+								$vo['addtime'] = date('Y-m-d',time($vo['addtime']));
+							?>
+								<li style="height: 15px;">
+									<img src="__TMPL__/images/list_icon.jpg" alt="{$vo.title}" style="float:left;">
+									<a href="{$vo.aid|url=articles,###}" style="float:left;">{$vo.title|msubstr=###,0,20,'utf-8'}</a>
+									<span style="float:right">{$vo.addtime}</span>
+								</li>
+								</arclist>
+							</ul>
 						</div>
 					</div>
-					<p class="two_access"><span>充值</span><span>报名</span></p>
+					<div class="ad">
+						<div class="ad_title">
+							<span class="ad_name" style="width: 136px;">政策法规</span>
+							<span class="ad_more"><a href="{:url('lists',128)}">更多》</a></span>
+						</div>
+						<div class="ad_content font12">
+							<ul>
+								<arclist model="article" order="istop desc,ishot desc,addtime desc" where="typeid=128" id="vo" num="10" >
+								<?php
+								$vo['addtime'] = date('Y-m-d',time($vo['addtime']));
+							?>
+								<li style="height: 15px;">
+									<img src="__TMPL__/images/list_icon.jpg" alt="{$vo.title}" style="float:left;">
+									<a href="{$vo.aid|url=articles,###}" style="float:left;">{$vo.title|msubstr=###,0,20,'utf-8'}</a>
+									<span style="float:right">{$vo.addtime|}</span>
+								</li>
+								</arclist>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="built_county" style="width: 800px;height:80px;">
+					{:Ad(31);}
+					{:Ad(32);}
+				</div>
+				<div class="all_beautiful_city">
+					<div class="beautiful_city">
+						<div class="title">导游之家</div>
+						<span class="know_more font12"><a href="{:url('lists',45)}">更多</a></span>
+						<div class="content">
+							<p><img src="__TMPL__/images/jlfj1.jpg" alt="" width="178" height="100"></p>
+							
+						</div>
+					</div>
+					<div class="beautiful_city">
+						<div class="title">导游词精选</div>
+						<span class="know_more font12"><a href="{:url('lists',46)}">更多</a></span>
+						<div class="content">
+							<p><img src="__TMPL__/images/jlfj2.jpg" alt="" width="178" height="100"></p>
+							
+						</div>
+					</div>
+					<div class="beautiful_city">
+						<div class="title">导游供求</div>
+						<span class="know_more font12"><a href="{:url('lists',47)}">更多</a></span>
+						<div class="content">
+							<p><img src="__TMPL__/images/jlfj3.jpg" alt="" width="178" height="100"></p>
+							
+						</div>
+					</div>
+					<div class="beautiful_city">
+						<div class="title">游山玩水</div>
+						<span class="know_more font12"><a href="{:url('lists',48)}">更多</a></span>
+						<div class="content">
+							<p><img src="__TMPL__/images/jlfj4.jpg" alt="" width="178" height="100"></p>
+							
+						</div>
+					</div>
 				</div>
 			</div>
-			<div class="all_img" id="demo">
+			<div class="content_right">
+				<div class="play_test">
+				<a href="http://tiku.daoyouks.com" style="color:#fff">
+					旅游考试入口
+					<br><img src="__TMPL__/images/go.jpg" alt="" width="40" height="40">
+				</a>
+				</div>
+				<div class="right_good_city">
+					<div class="title">导游考试入门</div>
+					<div class="content font12">
+						<ul>
+						<arclist model="article" where="typeid=43" id="vo"  num="7">
+						<li style="border-bottom: 1px dashed #999;text-indent: 2em;line-height: 25px;height: 25px;"><a href="{$vo.aid|url=articles,###}">{$vo.title|msubstr=###,0,10,'utf-8'}</a></li>
+						</arclist>
+						</ul>
+					</div>
+				</div>
+				<div class="right_good_city">
+					<div class="title">常见问题</div>
+					<div class="content font12">
+						<ul>	
+						<arclist model="article" where="typeid=44" id="vo" num="5">
+						<li style="border-bottom: 1px dashed #999;text-indent: 2em;line-height: 25px;height: 25px;"><a href="{$vo.aid|url=articles,###}">{$vo.title|msubstr=###,0,10,'utf-8'}</a></li>
+						</arclist>
+						</ul>
+					</div>
+				</div>
+				<div class="right_good_city">
+					<div class="title">资料下载</div>
+					<div class="content font12">
+						<ul>
+							<arclist model="attach" num="7" id="vo" where="is_view=1">
+							<li style="border-bottom: 1px dashed #999;text-indent: 2em;line-height: 25px;height: 25px;"><a href="__ROOT__{$vo.url}">{$vo.title|msubstr=###,0,10,'utf-8'}</a></li>
+							</arclist>
+						</ul>
+					</div>
+				</div>
+				<div class="right_good_city">
+					<div class="title">用户留言</div>
+					<div class="content">
+						<form action="{:U('Guestbook/update')}" method="post">
+							<textarea name="content" id="" cols="20" rows="5"></textarea>
+							<p><input type="submit" value="提交留言"></p>
+						</form>
+					</div>
+				</div>
+				<p class="two_access"><a href=""><span>点我报名</span></a></p>
+			</div>
+		</div>
+		<div class="all_img" id="demo">
 			<div id="indemo" style="width: 800%;float: left">
 				<div id="demo1" style="float: left">
-				<arclist model="flash" where="status=1" id="vo" num="6">
+				<arclist model="flash" where="status=2" id="vo" num="6">
 					<img src='__PUBLIC__/Uploads/hd/{$vo.pic}' alt="" width="140" height="80"/>
 				</arclist>
 				</div>
 				<div id="demo2" style="float: left"></div>
 			</div>
-			</div>
 		</div>
 	</div>
+</div>
 	<script>
 <!--
 var speed=10; //数字越大速度越慢
@@ -181,25 +251,14 @@ tab.onmouseover=function() {clearInterval(MyMar)};
 tab.onmouseout=function() {MyMar=setInterval(Marquee,speed)};
 -->
 </script>
-
-
-<script language="javascript">
-		var speed=30;
-		var demo2=document.getElementById("content_bot");
-		var demo1=document.getElementById("content_top");
-		var demo=document.getElementById("new_content");
-		demo2.innerHTML=demo1.innerHTML;
-		function Marquee(){
-			if(demo2.offsetTop-demo.scrollTop<=0){
-			   demo.scrollTop-=demo1.offsetHeight;
-			}
-			else{
-			   demo.scrollTop++;
-			}
-		}
-		var MyMar=setInterval(Marquee,speed);
-		demo.onmouseover=function() {clearInterval(MyMar)};
-		demo.onmouseout=function() {MyMar=setInterval(Marquee,speed)};
-	</script>
+<script> 
+var c, _ = Function; 
+with (o = document.getElementById("new_content")) { 
+	innerHTML += innerHTML; 
+	onmouseover = _("c=1"); 
+	onmouseout = _("c=0"); 
+} 
+(F = _("if(#%18||!c)#++,#%=o.scrollHeight>>1;setTimeout(F,#%115?1:3000);".replace(/#/g, "o.scrollTop")))(); 
+</script> 
 <include file="./Web/Tpl/default/qqonline.html"/> 
 <include file="$footer"/> 

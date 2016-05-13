@@ -8,10 +8,10 @@
 		top:300px; 
 		overflow:hidden;
 }
-.cus_ser_{width:165px; height:142px; background:#1463da;border-bottom-left-radius:4px;  border-top-left-radius:4px;overflow:hidden;}
+.cus_ser_{width:190px; height:142px; background:#1463da;border-bottom-left-radius:4px;  border-top-left-radius:4px;overflow:hidden;}
 #cus_ser .title{ width:32px; height:112px; float:left; background:url(../images/zxzx.jpg); cursor:pointer;
 }
-#cus_ser  ul{ padding:10px 0px 0px 2px; width:130px; float:left;}
+#cus_ser  ul{ padding:10px 0px 0px 2px; width:156px; float:left;}
 #cus_ser  ul li#zqq{ height:30px; line-height:30px; display:block; font-size:12px; padding-left:24px; background:url(../images/zqq.png) no-repeat 2px 7px;}
 #cus_ser  ul li#zphone{ height:30px; line-height:30px; display:block; font-size:12px; padding-left:24px; background:url(../images/zphone.png) no-repeat 2px 8px;}
 #cus_ser  ul li#wb{ height:30px; line-height:30px; display:block; font-size:12px; padding-left: 12px;}

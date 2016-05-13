@@ -23,7 +23,7 @@
     <td height="25">{$vo.rank}</td>
     <td height="25" align="center"><a href="__URL__/edit/id/{$vo.id}">{$vo.title}</a></td>
     <td height="25" align="center">{$vo.url}</td>
-	 <td height="25" align="center"><a href="__URL__/status/id/{$vo.id}/status/{$vo.status}"><eq name= "vo.status" value= "1">正常<else/><font color="red">隐藏</font></eq></a></td>
+	 <td height="25" align="center"><eq name= "vo.status" value= "1">顶部<else/><font color="red">底部</font></eq></td>
     <td align="center"><a href="__URL__/edit/id/{$vo.id}">编辑</a>|<a href="__URL__/del/id/{$vo.id}" onClick="JavaScript:return confirm('确定要删除?')">删除</a></td>
     </tr>
 	</volist>

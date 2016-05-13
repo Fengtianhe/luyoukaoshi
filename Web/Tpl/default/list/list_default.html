@@ -1,21 +1,42 @@
 <!--演示包括其他模板文件-->
 <include file="./Web/Tpl/default/head_inner.html"/>
+<link href="__TMPL__css/zzsc.css" type="text/css" rel="stylesheet" />
+<script>
+$(function (){
+  $(".left_nav dd").hover(function(){
+  $(".nav_right",this).show();
+  });
+  $(".left_nav dd").mouseleave(function(){
+  $(".nav_right",this).hide();
+  });
+});
+</script>
 <div class="container">
 			<div class="content">
 				<div class="content_all clearfix">
 					<div class="content_right left_list">
-						<div class="right_title">文章列表</div>
-						<div class="right_list font12">
-							<dl>
-								<arclist model="article" order="addtime desc" num="10">
-								<dd><a href='{$vo.aid|url='articles',###}' target='_blank' title='{$vo.title}'>{$vo.title|msubstr=###,0,12,'utf-8'}</a></dd>
-								</arclist>
+						<div class="right_title">栏目列表</div>
+						<div class="right_list font12 left_nav">
+							<dl id='suckertree1'>
+							<!--当前级的上一级菜单，本级循环二级-->
+							<php>$fid=get_field('type','typeid='.$type[typeid],'fid');if($fid==0){ $pid=$type[typeid]; }else{ $pid=$fid; }</php>
+								<category parentid="$pid" id="vo">
+								<dd style="margin-left:10px;" class="nav_left"><A href='{$vo.typeid|url=lists,###}'>{$vo.typename}</A><!--判定是否有子类-->
+								<php>$cid = get_children($vo['typeid']);if($vo['typeid'] != $cid){</php>
+									<ul style="display:none" class="nav_right">
+										<category parentid="$vo[typeid]" id="voo">	
+										<li><a href='{$voo.typeid|url=lists,###}' >{$voo.typename}</a></li> 
+										</category>
+									</ul>
+								<php>}</php>
+								</dd>
+								</category>
 							</dl>
 						</div>
 					</div>
 					<div class="content_left right_list_margin">
 						<div class="all_advertist">
-							<span class="message_padding">{$last_dh.typename}</span>
+							<span class="message_padding"></span>
 							
 							<div class="font12 now_local">当前位置:{$nav}</div>
 						</div>

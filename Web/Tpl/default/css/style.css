@@ -3,8 +3,15 @@ html,body,ul,li,p{
 	padding: 0;
 	font-family: "微软雅黑";
 }
-a {
+a{
 	text-decoration: none;
+}
+li a {
+
+	color:#666;
+}
+li a:visited{
+	color:#666;
 }
 .clearfix:after {
 	height: 0;
@@ -55,9 +62,15 @@ a {
 	float: left;
 	line-height: 50px;
 	padding: 0 20px;
+	font-weight: bold;
 }
+.content_bar ul li ul li{
+	display:none;
+}
+
 .content_bar ul li a {
 	color: #fff; 
+	font-size: 16px;
 }
 .content_all {
 	width: 1024px;
@@ -72,7 +85,7 @@ a {
 	border-radius: 5px;
 }
 .content_left p {
-	padding: 10px 0;
+	padding: 8px 0;
 }
 .message_padding {
 	padding-left: 20px;
@@ -84,7 +97,7 @@ a {
 }
 .artical {
 	padding: 14px;
-	height: 585px;
+	height: auto;
 }
 
 .content_right {
@@ -113,6 +126,7 @@ a {
 	height: 40px;
 	line-height: 40px;
 	border-bottom: 1px solid #ddd;
+	margin-left:0px;
 }
 .right_list dl dd a {
 	color: #333;
@@ -174,14 +188,6 @@ a {
 	height: 35px;
 	margin: 30px;
 }
-.new_content {
-	display: inline-block;
-    padding-left: 20px;
-    line-height: 1px;
-    height: 60px;
-    overflow: hidden;
-    margin-top: 20px;
-}
 .new_list {
 	margin-top: 20px;
 }
@@ -200,7 +206,7 @@ a {
 	background: #333;
 	text-indent: 1em;
 	line-height: 25px;
-	font-size: 12px;
+	font-size: 14px;
 	color: #fff;
 }
 .all_news {
@@ -233,87 +239,114 @@ a {
 }
 .ad_title {
 	width: 390px;
-	line-height: 45px;
+	line-height: 27px;
 }
 .ad_name {
-	padding: 10px 20px;
-	height: 45px;
-	line-height: 45px;
+	padding: 0px 20px;
+	height: 40px;
+	line-height: 40px;
 	text-align: center;
 	background: url(../images/top_bg.jpg) repeat-x;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
 	color: #fff;
+	float:left;
+	width:110px;
+	font-weight: bolder;
 }
 .ad_more {
 	float: right;
 	padding-right: 10px;
+	padding-top:15px;
+	
+	font-size: 12px; 
+}
+.ad_more a{
+	color:#000 !important;
 }
 .ad_content {
 	position:relative;
 	top: -2px;
 	width: 388px;
 	min-height: 250px;
-	border: 1px solid #042688;
+	border-top: 1px solid #042688;
 	border-bottom-right-radius: 8px;
 	overflow: hidden;
+	height:260px;
 }
 .ad_content ul {
 	list-style: none;
 }
 .ad_content ul li {
-	padding: 9px 0 0 25px;
+	padding: 9px 0 0 10px;
+}
+
+.ad_content ul li img{
+	margin-top: 3px;
 }
 .ad_content ul li a {
-	color: #333;
+	color: #000;
 }
 .ad_content ul li a:hover {
 	color: #888;
 }
-.built_county {
-	margin-top: 20px; 
-}
 .built_county img {
 	margin: 8px;
+	float:left;
 }
 .all_beautiful_city {
 	margin-top: 20px;
+	width:100%;
+	height:180px;
 }
 .beautiful_city {
 	float: left;
 	margin: 0 9px;
+	width:180px;
+	height:180px;
+	border-radius: 10px;
 }
 .beautiful_city .title {
-	width: 180px;
-	height: 45px;
-	line-height: 45px;
-	text-align: left;
-	text-indent: 20px;
-	background: url(../images/top_bg.jpg) repeat-x;
+	width: 100px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	background: url(../images/top_bg.jpg) repeat-x ;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
 	color: #fff;
+	font-weight: bolder;
+	margin-left: 1px;
+	float: left;
 }
 .beautiful_city .content {
 	position:relative;
 	min-height: 130px;
 	width: 178px;
 	top: -1px;
-	border: 1px solid #042688;
-	border-bottom-right-radius: 8px;
+	border-top: 1px solid #042688;
 	overflow: hidden;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border-top-right-radius: 5px;
 }
 .beautiful_city .content p {
 	padding: 0;
 }
-.beautiful_city .content .know_more {
+.beautiful_city .know_more {
 	text-align: right;
-	padding: 2px 10px;
+	float: left;
+	line-height: 30px;
+	margin-left: 50px;
 }
-.beautiful_city .content .know_more a {
-	color: #333;
+.beautiful_city .know_more a {
+	color: #000;
+	font-size: 12px;
 }
-.beautiful_city .content .know_more a:hover {
+.beautiful_city .know_more a:visited{
+	color: #000;
+}
+.beautiful_city .know_more a:hover {
 	color: #888;
 }
 .play_test {
@@ -338,6 +371,7 @@ a {
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
 	color: #fff;
+	font-weight: bolder;
 }
 .right_good_city .content {
 	position:relative;
@@ -355,18 +389,21 @@ a {
 .right_good_city .content p {
 	text-align: center;
 }
+.right_good_city ul li{
+	list-style:none;
+}
 .two_access {
 	margin-top: 20px;
 }
 .two_access span {
 	display: inline-block;
-	width: 90px;
+	width: 190px;
 	height: 30px;
 	margin: 5px;
 	line-height: 30px;
 	text-align: center;
 	color: #fff;
-	background-color: #001d59;
+	background:url(../images/top_bg.jpg) repeat-x;
 }
 .all_img {
 	width: 1024px;
@@ -399,7 +436,7 @@ a {
 	color: #333;
 }
 .all_list {
-	font-size: 12px;
+	font-size: 14px;
 }
 .all_list_first_p {
 	background-color: #ddd;
@@ -429,5 +466,5 @@ a {
 }
 .now_local{
 	display: block;
-	float: right;
+	float: left;
 }

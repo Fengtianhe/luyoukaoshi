@@ -9,16 +9,19 @@
 							<div class="font12 now_local">当前位置:{$nav}</div>
 						</div>
 						<div class="artical">
-							<h3>{$article.title}</h3>
+							<center>
+								<h3>{$article.title}</h3>
+								<div style="font-size:12px;">时间：{$article.addtime}&nbsp;&nbsp;作者：{$article.author}&nbsp;&nbsp; 来源：{$article.copyfrom}&nbsp;&nbsp;已浏览【<script src="{:U('Api/hits_js?aid='.$article['aid'])}"></script>】次&nbsp;</div>
+							</center>
 							<p>{$article.content}</p>
 						</div>
 					</div>
 					<div class="content_right">
-						<div class="right_title">文章列表</div>
+						<div class="right_title">{$type.typename}</div>
 						<div class="right_list font12">
 							<dl>
-								<arclist model="article" order="addtime desc" num="5">
-								<dd><a href='{$vo.aid|url='articles',###}' target='_blank' title='{$vo.title}'>{$vo.title|msubstr=###,0,12,'utf-8'}</a></dd>
+								<arclist model="article" where="typeid=$typeid" order="addtime desc" num="5">
+								<dd><a href='{$vo.aid|url='articles',###}' target='_blank' title='{$vo.title}'>{$vo.title|msubstr=###,0,10,'utf-8'}</a></dd>
 								</arclist>
 							</dl>
 						</div>

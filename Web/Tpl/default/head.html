@@ -8,13 +8,40 @@
 <meta name="description" content="{$config.sitedescription}" />
 <link href="__TMPL__/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="__TMPL__/js/jquery.min.js"></script>
+<!--背景跑马灯-->
+<link href="__TMPL__css/nivo-slider.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__TMPL__js/jquery-1.4.3.min.js"></script>
+<script type="text/javascript" src="__TMPL__js/jquery.nivo.slider.pack.js"></script>
+<!--/-->
 </head>
 
 <body>
+<script type="text/javascript">
+	// $(window).load(function() {
+	// 	$('#slider').nivoSlider();
+	// });
+var j = jQuery.noConflict();
+j(document).ready(function () {
+    j('#slider').nivoSlider();
+});
+	
+window.onload = function(){
+	$('#slider img').css("width","1024px");
+}
+</script>
 <div class="top_container">
-		<div class="top_content">
+		
+		<div class="top_content"  style="z-index: 1000;position: relative;"><div id="wrapper" style="z-index: -1000;position:absolute;">
+			<div id="slider-wrapper">
+				<div id="slider" class="nivoSlider" style="width:100%;min-width:1024px;height:130px;margin:0 auto">
+				  	<arclist model="flash" where="status=1" order="rank asc" id="vo">
+                    	<img src="__PUBLIC__/Uploads/hd/{$vo.pic}" alt="" height="130" width="100%"/>
+	                </arclist>                   
+			  	</div>
+		 	 </div>
+		</div>
 			<p class="friend_link font12"><a href="">新浪微博</a>/<a href="">腾讯微博</a></p>
-			<p><img src="__PUBLIC__/image/logo.png" alt="" height="50"></p>
+			<p><img src="__PUBLIC__/Uploads/logo/{$config.sitelogo}" alt="" height="50"></p>
 			<p class="wang_to_do font12">宗旨:{$config.sitedescription}</p>
 		</div>
 	</div>

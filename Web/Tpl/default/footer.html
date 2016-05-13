@@ -2,29 +2,29 @@
 		<div class="foot_top clearfix">
 			<div class="top_left">友情链接</div>
 			<div class="top_right">
-				<select name="" id="" class="font12" onchange="self.location.href=options[selectedIndex].value">
+				<select name="" id="" class="font12" onchange="window.open(options[selectedIndex].value)">
 					<option value="">中国政府和国家委网站</option>
 					<arclist model="link" where="type=1" id="vo">
-					<option value="{$vo.url}">{$vo.title}</option>
+					<option value="{$vo.url}" target="_blank">{$vo.title}</option>
 					</arclist>
 				</select>
-				<select name="" id="" class="font12" onchange="self.location.href=options[selectedIndex].value">
+				<select name="" id="" class="font12" onchange="window.open(options[selectedIndex].value)">
 					<option value="">省(区市)政府网站</option>
 					<arclist model="link" where="type=2" id="vo">
-					<option value="{$vo.url}">{$vo.title}</option>
+					<option value="{$vo.url}" target="_blank">{$vo.title}</option>
 					</arclist>
 				</select>
-				<select name="" id="" class="font12" onchange="self.location.href=options[selectedIndex].value">
+				<select name="" id="" class="font12" onchange="window.open(options[selectedIndex].value)">
 					<option value="">其他友情链接</option>
 					<arclist model="link" where="type=3" id="vo">
-					<option value="{$vo.url}">{$vo.title}</option>
+					<option value="{$vo.url}" target="_blank">{$vo.title}</option>
 					</arclist>
 				</select>
 			</div>
 		</div>
 		<div class="foot_content font12">
-			<p>电话:000000000地址:吉林市</p>
-			<p>ICP备</p>
+			<p>{$config.sitelx}</p>
+			<!-- <p><a href="http://www.miitbeian.gov.cn/">{$config.sitetcp}</a></p> -->
 		</div>
 	</div>
 </body>

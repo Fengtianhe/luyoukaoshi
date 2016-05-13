@@ -12,16 +12,14 @@
     <div class="cus_ser_">
         <div class="title"></div>
         <ul>
-            <arclist model="qqonline" id="vo" where="status=1&is_qun=-1">
+            <arclist model="qqonline" id="vo" where="is_qun=2">
             <li id="zqq">
                 <a href="http://wpa.qq.com/msgrd?v=3&uin={$vo.number}&site=qq&menu=yes" target="_blank">{$vo.name}：{$vo.number}</a>
             </li>
             </arclist>
-            <arclist model="qqonline" id="vo" where="status=1&is_qun=1">
             <li id="zphone">
-                <a href="http://url.cn/QY2QaZ" target="_blank">QQ群:<b>{$vo.number}</b></a>
+                <a href="http://jq.qq.com/?_wv=1027&k=2DbPU0F" target="_blank">QQ群:<b>{$vo.number}</b></a>
             </li>
-            </arclist>
         </ul>
     </div>
     <span class="close">
@@ -36,7 +34,7 @@
 $("#cus_ser").mouseover(function() {
     $(this).stop();
     $(this).animate({
-        width: 165
+        width: 190
     },
     400, 'swing');
 }) 

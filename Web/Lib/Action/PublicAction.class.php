@@ -44,7 +44,7 @@ class PublicAction extends Action
         $this->assign('menuson', $menuson);
         $this->assign('menu', $menu);
         //位置导航
-        $nav = '<a href="' . $config['siteurl'] . '">首页</a>';
+        $nav = '<a href="__ROOT__/">首页</a>';
         if (isset($_GET['aid'])) {
             $typeid = $article->where('aid=' . intval($_GET['aid']))->getField('typeid');
         } else {
