@@ -1,17 +1,23 @@
-<include file="$head"/>        
+<include file="$head"/>      
+<link rel="stylesheet" type="text/css" href="__TMPL__css/yx_rotaion.css"/>
+<style>
+.built_county{
+	float: left;
+}
+</style>
 <div class="container">
 	<div class="content">
 		<div class="content_all clearfix">
 			<div class="content_left index_content_left">
 				<div class="now_news">
-					<span class="new_title" style="float: left;">新闻头条</span>
+					<span class="new_title" style="float: left;font-weight: bolder;font-size: 14px;">新闻头条</span>
 					<img src="__TMPL__/images/title.jpg" alt="" height="100" style="float: left;"/>
 					<div class="new_content" id="new_content" style="width:670px;float: left;overflow: hidden;height: 100px;">
 						<arclist model="article" where="typeid=50" num="5" id="vo">
 						<?php
 							$vo['content'] = strip_tags($vo['content']);
 						?>
-						<a href="{$vo.aid|url=articles,###}" style="color:#000;display:block;height: 100px;margin-top:-5px">
+						<a href="{$vo.aid|url=articles,###}" target="_blank" style="color:#000;display:block;height: 100px;margin-top:-5px">
 							<h3>{$vo.title}</h3>
 							<div class="font12" style="width: 670px;height:50px;line-height: 22px;">
 								{$vo.content|msubstr=###,0,130,'utf-8'}...
@@ -21,23 +27,35 @@
 					</div>
 				</div>
 				<div class="new_list clearfix">
-					<div class="new_img">
-						<arclist model="article" order="addtime desc" where="typeid=49" num="1" id="vo">
-						<div style="width: 100%;height: 100%;">
-							<img src="{$vo.imgurl}" alt="" width="450" height="300" style="z-index: 0;position: relative;"/>
-							<div class="img_title">{$vo.title}</div>
-						</div>
-						</arclist>
+				<div style="width: 450px;height: 300px;float: left;">
+					<div id="banner" style="width: 450px;height: 300px;float: left;"> 
+							  <div id="banner_bg"></div>  <!--标题背景-->
+							  <div id="banner_info"></div> <!--标题-->
+								   <ul>
+									 <li class="on">1</li>
+									 <li>2</li>
+									 <li>3</li>
+									 <li>4</li>
+								   </ul>
+								<div id="banner_list">
+								  <arclist model="article" order="addtime desc" where="typeid=49 and isflash=1" num="4" id="vo">           
+									<a href="{$vo.aid|url=articles,###}" target="_blank">
+									  <img src='{$vo.imgurl}' onload="AutoResizeImage(450,300,this)" title="{$vo.title}" alt="{$vo.title|msubstr=0,20,"utf-8",true}" />
+									</a>
+								  </arclist>
+								</div>
+					  </div>
 					</div>
 					<div class="all_news font12">
 						<ul>
 							<arclist model="article" order="istop desc,ishot desc,addtime desc" where="typeid=49" num="15" id="vo">
 							<?php
-								$vo['addtime'] = date('Y-m-d',time($vo['addtime']));
+								$vo['addtime'] = date('Y-m-d',strtotime($vo['addtime']));
 							?>
 							<li style="height: 20px;">
 								<img src="__TMPL__/images/list_icon.jpg" alt="" style="float:left;">
-								<a href="{$vo.aid|url=articles,###}" style="float:left;">{$vo.title}</a>
+								<a href="{$vo.aid|url=articles,###}" target="_blank" style="float:left; <?php if($vo['titlecolor']) echo 'color:'.$vo['titlecolor'].'"';?>">
+								{$vo.title|msubstr=###,0,15,'utf-8'}...</a>
 								<span style="float:right">{$vo.addtime|}</span>
 							</li>
 							</arclist>
@@ -47,18 +65,18 @@
 				<div class="all_new_ad clearfix">
 					<div class="ad">
 						<div class="ad_title">
-							<span class="ad_name" style="width: 136px;">通知公告</span>
-							<span class="ad_more"><a href="{:url('lists',50)}">更多》</a></span>
+							<span class="ad_name" style="width: 136px;">新闻公告</span>
+							<span class="ad_more"><a href="{:url('lists',50)}" target="_blank">更多》</a></span>
 						</div>
 						<div class="ad_content font12">
 							<ul>
 								<arclist model="article" order="istop desc,ishot desc,addtime desc" where="typeid=50" id="vo" num="10" >
 								<?php
-									$vo['addtime'] = date('Y-m-d',time($vo['addtime']));
+									$vo['addtime'] = date('Y-m-d',strtotime($vo['addtime']));
 								?>
 								<li style="height: 15px;">
 									<img src="__TMPL__/images/list_icon.jpg" alt="{$vo.title}" style="float:left;">
-									<a href="{$vo.aid|url=articles,###}" style="float:left;">{$vo.title|msubstr=###,0,20,'utf-8'}</a>
+									<a href="{$vo.aid|url=articles,###}" style="float:left; <?php if($vo['titlecolor']) echo 'color:'.$vo['titlecolor'].'"';?>" target="_blank">{$vo.title|msubstr=###,0,20,'utf-8'}</a>
 									<span style="float:right">{$vo.addtime|}</span>
 								</li>
 								</arclist>
@@ -67,18 +85,18 @@
 					</div>
 					<div class="ad">
 						<div class="ad_title">
-							<span class="ad_name" style="width: 136px;">新闻资讯</span>
-							<span class="ad_more"><a href="{:url('lists',51)}">更多》</a></span>
+							<span class="ad_name" style="width: 136px;">资料下载</span>
+							<span class="ad_more"><a href="{:url('lists',51)}" target="_blank">更多》</a></span>
 						</div>
 						<div class="ad_content font12">
 							<ul>
 								<arclist model="article" order='istop desc,ishot desc,addtime desc' where="typeid=51" id="vo" num="10">
 								<?php
-								$vo['addtime'] = date('Y-m-d',time($vo['addtime']));
+								$vo['addtime'] = date('Y-m-d',strtotime($vo['addtime']));
 							?>
 								<li style="height: 15px;">
 									<img src="__TMPL__/images/list_icon.jpg" alt="{$vo.title}" style="float:left;">
-									<a href="{$vo.aid|url=articles,###}" style="float:left;">{$vo.title|msubstr=###,0,20,'utf-8'}</a>
+									<a href="{$vo.aid|url=articles,###}" target="_blank" style="float:left; <?php if($vo['titlecolor']) echo 'color:'.$vo['titlecolor'].'"';?>">{$vo.title|msubstr=###,0,20,'utf-8'}</a>
 									<span style="float:right">{$vo.addtime|}</span>
 								</li>
 								</arclist>
@@ -94,17 +112,17 @@
 					<div class="ad">
 						<div class="ad_title">
 							<span class="ad_name" style="width: 136px;">各省文件</span>
-							<span class="ad_more"><a href="{:url('lists',129)}">更多》</a></span>
+							<span class="ad_more"><a href="{:url('lists',129)}" target="_blank">更多》</a></span>
 						</div>
 						<div class="ad_content font12">
 							<ul>
 								<arclist model="article" order="istop desc,ishot desc,addtime desc" where="typeid=129" id="vo" num="10" >
 								<?php
-								$vo['addtime'] = date('Y-m-d',time($vo['addtime']));
+								$vo['addtime'] = date('Y-m-d',strtotime($vo['addtime']));
 							?>
 								<li style="height: 15px;">
 									<img src="__TMPL__/images/list_icon.jpg" alt="{$vo.title}" style="float:left;">
-									<a href="{$vo.aid|url=articles,###}" style="float:left;">{$vo.title|msubstr=###,0,20,'utf-8'}</a>
+									<a href="{$vo.aid|url=articles,###}" style="float:left;<?php if($vo['titlecolor']) echo 'color:'.$vo['titlecolor'].'"';?>" target="_blank" >{$vo.title|msubstr=###,0,20,'utf-8'}</a>
 									<span style="float:right">{$vo.addtime}</span>
 								</li>
 								</arclist>
@@ -114,17 +132,17 @@
 					<div class="ad">
 						<div class="ad_title">
 							<span class="ad_name" style="width: 136px;">政策法规</span>
-							<span class="ad_more"><a href="{:url('lists',128)}">更多》</a></span>
+							<span class="ad_more"><a href="{:url('lists',128)}" target="_blank">更多》</a></span>
 						</div>
 						<div class="ad_content font12">
 							<ul>
 								<arclist model="article" order="istop desc,ishot desc,addtime desc" where="typeid=128" id="vo" num="10" >
 								<?php
-								$vo['addtime'] = date('Y-m-d',time($vo['addtime']));
+								$vo['addtime'] = date('Y-m-d',strtotime($vo['addtime']));
 							?>
 								<li style="height: 15px;">
 									<img src="__TMPL__/images/list_icon.jpg" alt="{$vo.title}" style="float:left;">
-									<a href="{$vo.aid|url=articles,###}" style="float:left;">{$vo.title|msubstr=###,0,20,'utf-8'}</a>
+									<a href="{$vo.aid|url=articles,###}" style="float:left;<?php if($vo['titlecolor']) echo 'color:'.$vo['titlecolor'].'"';?>" target="_blank" >{$vo.title|msubstr=###,0,20,'utf-8'}</a>
 									<span style="float:right">{$vo.addtime|}</span>
 								</li>
 								</arclist>
@@ -139,7 +157,7 @@
 				<div class="all_beautiful_city">
 					<div class="beautiful_city">
 						<div class="title">导游之家</div>
-						<span class="know_more font12"><a href="{:url('lists',45)}">更多</a></span>
+						<span class="know_more font12"><a href="{:url('lists',45)}" target="_blank">更多</a></span>
 						<div class="content">
 							<p><img src="__TMPL__/images/jlfj1.jpg" alt="" width="178" height="100"></p>
 							
@@ -147,7 +165,7 @@
 					</div>
 					<div class="beautiful_city">
 						<div class="title">导游词精选</div>
-						<span class="know_more font12"><a href="{:url('lists',46)}">更多</a></span>
+						<span class="know_more font12"><a href="{:url('lists',46)}" target="_blank">更多</a></span>
 						<div class="content">
 							<p><img src="__TMPL__/images/jlfj2.jpg" alt="" width="178" height="100"></p>
 							
@@ -155,7 +173,7 @@
 					</div>
 					<div class="beautiful_city">
 						<div class="title">导游供求</div>
-						<span class="know_more font12"><a href="{:url('lists',47)}">更多</a></span>
+						<span class="know_more font12"><a href="{:url('lists',47)}" target="_blank">更多</a></span>
 						<div class="content">
 							<p><img src="__TMPL__/images/jlfj3.jpg" alt="" width="178" height="100"></p>
 							
@@ -163,7 +181,7 @@
 					</div>
 					<div class="beautiful_city">
 						<div class="title">游山玩水</div>
-						<span class="know_more font12"><a href="{:url('lists',48)}">更多</a></span>
+						<span class="know_more font12"><a href="{:url('lists',48)}" target="_blank">更多</a></span>
 						<div class="content">
 							<p><img src="__TMPL__/images/jlfj4.jpg" alt="" width="178" height="100"></p>
 							
@@ -173,17 +191,17 @@
 			</div>
 			<div class="content_right">
 				<div class="play_test">
-				<a href="http://tiku.daoyouks.com" style="color:#fff">
-					旅游考试入口
+				<a href="http://tiku.daoyouks.com" style="color:#fff" target="_blank">
+					<b>导游机考练习<br/>及模拟考试系统</b>
 					<br><img src="__TMPL__/images/go.jpg" alt="" width="40" height="40">
 				</a>
 				</div>
 				<div class="right_good_city">
-					<div class="title">导游考试入门</div>
+					<div class="title">旅游新手入门</div>
 					<div class="content font12">
 						<ul>
 						<arclist model="article" where="typeid=43" id="vo"  num="7">
-						<li style="border-bottom: 1px dashed #999;text-indent: 2em;line-height: 25px;height: 25px;"><a href="{$vo.aid|url=articles,###}">{$vo.title|msubstr=###,0,10,'utf-8'}</a></li>
+						<li style="border-bottom: 1px dashed #999;text-indent: 2em;line-height: 25px;height: 25px;"><a href="{$vo.aid|url=articles,###}" target="_blank" <?php if($vo['titlecolor']) echo 'style="color:'.$vo['titlecolor'].'"';?>>{$vo.title|msubstr=###,0,10,'utf-8'}</a></li>
 						</arclist>
 						</ul>
 					</div>
@@ -193,17 +211,17 @@
 					<div class="content font12">
 						<ul>	
 						<arclist model="article" where="typeid=44" id="vo" num="5">
-						<li style="border-bottom: 1px dashed #999;text-indent: 2em;line-height: 25px;height: 25px;"><a href="{$vo.aid|url=articles,###}">{$vo.title|msubstr=###,0,10,'utf-8'}</a></li>
+						<li style="border-bottom: 1px dashed #999;text-indent: 2em;line-height: 25px;height: 25px;"><a href="{$vo.aid|url=articles,###}" target="_blank" <?php if($vo['titlecolor']) echo 'style="color:'.$vo['titlecolor'].'"';?>>{$vo.title|msubstr=###,0,10,'utf-8'}</a></li>
 						</arclist>
 						</ul>
 					</div>
 				</div>
 				<div class="right_good_city">
-					<div class="title">资料下载</div>
+					<div class="title">政策解读</div>
 					<div class="content font12">
 						<ul>
 							<arclist model="attach" num="7" id="vo" where="is_view=1">
-							<li style="border-bottom: 1px dashed #999;text-indent: 2em;line-height: 25px;height: 25px;"><a href="__ROOT__{$vo.url}">{$vo.title|msubstr=###,0,10,'utf-8'}</a></li>
+							<li style="border-bottom: 1px dashed #999;text-indent: 2em;line-height: 25px;height: 25px;"><a href="__ROOT__{$vo.url}" target="_blank" <?php if($vo['titlecolor']) echo 'style="color:'.$vo['titlecolor'].'"';?>>{$vo.title|msubstr=###,0,10,'utf-8'}</a></li>
 							</arclist>
 						</ul>
 					</div>
@@ -217,13 +235,13 @@
 						</form>
 					</div>
 				</div>
-				<p class="two_access"><a href=""><span>点我报名</span></a></p>
+				<p class="two_access"><a href="" target="_blank"><span>点我报名</span></a></p>
 			</div>
 		</div>
 		<div class="all_img" id="demo">
 			<div id="indemo" style="width: 800%;float: left">
 				<div id="demo1" style="float: left">
-				<arclist model="flash" where="status=2" id="vo" num="6">
+				<arclist model="flash" where="status=0" id="vo" num="6">
 					<img src='__PUBLIC__/Uploads/hd/{$vo.pic}' alt="" width="140" height="80"/>
 				</arclist>
 				</div>
@@ -258,7 +276,40 @@ with (o = document.getElementById("new_content")) {
 	onmouseover = _("c=1"); 
 	onmouseout = _("c=0"); 
 } 
-(F = _("if(#%18||!c)#++,#%=o.scrollHeight>>1;setTimeout(F,#%115?1:3000);".replace(/#/g, "o.scrollTop")))(); 
+o.scrollTop = 356;
+(F = _("if(#%10||!c)#++,#%=o.scrollHeight>>1;setTimeout(F,#%90?1:3000);".replace(/#/g, "o.scrollTop")))(); 
 </script> 
+
+<script type="text/javascript">
+    var t = n = 0, count;
+    $(document).ready(function(){ 
+      count=$("#banner_list a").length;
+      $("#banner_list a:not(:first-child)").hide();
+      $("#banner_info").html($("#banner_list a:first-child").find("img").attr('alt'));
+      $("#banner_info").click(function(){window.open($("#banner_list a:first-child").attr('href'), "_blank")});
+      $("#banner li").click(function() {
+        var i = $(this).text() - 1;//获取Li元素内的值，即1，2，3，4
+        n = i;
+        if (i >= count) return;
+        $("#banner_info").html($("#banner_list a").eq(i).find("img").attr('alt'));
+        $("#banner_info").unbind().click(function(){window.open($("#banner_list a").eq(i).attr('href'), "_blank")})
+        $("#banner_list a").filter(":visible").fadeOut(500).parent().children().eq(i).fadeIn(1000);
+        document.getElementById("banner").style.background="";
+        $(this).toggleClass("on");
+        $(this).siblings().removeAttr("class");
+      });
+      t = setInterval("showAuto()", 4000);
+      $("#banner").hover(function(){clearInterval(t)}, function(){t = setInterval("showAuto()", 4000);});
+    })
+    
+    function showAuto()
+    {
+      n = n >=(count - 1) ? 0 : ++n;
+      $("#banner li").eq(n).trigger('click');
+    }
+  </script>
+  
+  <script type="text/javascript"> var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://"); document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F863025337138f76e43927eb31067fb04' type='text/javascript'%3E%3C/script%3E")) 
+		</script>
 <include file="./Web/Tpl/default/qqonline.html"/> 
 <include file="$footer"/> 

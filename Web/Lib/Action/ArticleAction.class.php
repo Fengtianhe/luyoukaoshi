@@ -30,6 +30,7 @@
     @Date 2011-11-21 08:24:25 $
 *************************************************************/
 class ArticleAction extends BaseAction {
+    
     Public function _empty() {
         alert('方法不存在', __APP__);
     }

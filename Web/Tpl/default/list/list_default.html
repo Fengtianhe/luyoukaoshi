@@ -51,7 +51,7 @@ $(function (){
 								<p class="other_p">
 									<span class="span_index">{$vo.aid}</span>
 									<span class="span_content">
-										<a href="{$vo.aid|url=articles,###}">{$vo.title|msubstr=###,0,38,'utf-8'}</a>
+										<a href="{$vo.aid|url=articles,###}" <?php if($vo['titlecolor']) echo 'style="color:'.$vo['titlecolor'].'"';?>>{$vo.title|msubstr=###,0,38,'utf-8'}</a>
 									</span>
 									<span class="span_time">[{$vo.addtime|msubstr=###,0,10}]</span>
 								</p>	

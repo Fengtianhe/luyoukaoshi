@@ -6,11 +6,11 @@ html,body,ul,li,p{
 a{
 	text-decoration: none;
 }
-li a {
+a {
 
 	color:#666;
 }
-li a:visited{
+a:visited{
 	color:#666;
 }
 .clearfix:after {
@@ -353,8 +353,9 @@ li a:visited{
 	width: 200px;
 	height: 150px;
 	text-align: center;
-	line-height: 75px;
+	line-height: 40px;
 	border-radius: 5px;
+	font-size: 14px;
 	background-color: #a40000;
 	color: #fff;
 }
@@ -430,7 +431,7 @@ li a:visited{
 	padding: 10px;
 }
 .font12 {
-	font-size: 12px;
+	font-size: 13px;
 }
 .color_333 {
 	color: #333;
@@ -467,4 +468,73 @@ li a:visited{
 .now_local{
 	display: block;
 	float: left;
+}
+#banner {
+	position:absolute;
+	width:380px; 
+	height:240px; 
+	overflow:hidden;
+	margin-top:2px;
+}
+#banner_list img{
+	margin-top: 20px;
+    border:0px;
+    width: 450px;
+    height: 300px;
+}
+#banner_bg{
+    position:absolute; 
+	bottom:0;
+	background-color:#000;
+	height:30px;
+	filter: Alpha(Opacity=0);
+	opacity:0.2;
+	z-index:1000;
+    cursor:pointer; 
+	width:450px;
+}
+#banner_info{
+    position:absolute; 
+	bottom:0; 
+	left:8px;
+	height:24px;
+	color:#fff;
+	font-size:12px;
+	z-index:1001;
+	cursor:pointer
+}
+#banner_text {
+    position:absolute;
+	width:120px;
+	z-index:1002; 
+	right:3px; 
+	bottom:3px;
+}
+#banner ul {
+    position:absolute;
+	list-style-type:none;
+	filter: Alpha(Opacity=80);
+	opacity:0.8; 
+	border:1px solid #fff;
+	z-index:1002;
+    margin-top:5px; 
+	padding:0; 
+	bottom:3px; 
+	right:15px;
+}
+#banner ul li { 
+    padding:0px 8px;
+	float:left;
+	display:block;
+	color:#FFF;
+	border:#e5eaff 1px solid;
+	height: 20px;
+	background:#6f4f67;
+	cursor:pointer
+}
+#banner ul li.on { 
+    background:#900
+}
+#banner_list a{
+    position:absolute;
 }
